@@ -1,0 +1,5 @@
+id,event_timestamp,device_type,session_id,visitor_id,item_id,redirection_source
+29839,11/15/2020 15:11,android,B000078,I7099,B17543,GOOGLE
+30504,11/15/2020 15:27,android,B000078,I7099,B17543,LinkedIn
+30334,11/15/2020 15:23,android,B000078,I7099,B17543,Youtube
+30385,11/15/2020 15:24,android,B000078,I7099,D8142,google
