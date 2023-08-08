@@ -1,12 +1,12 @@
-/.idea/
-/target/
-/project/target/
-/project/project/target/
+# /.idea/
+# /target/
+# /project/target/
+# /project/project/target/
 /data/output/
 /data/output/null_value_output
-/.DS_Store
-/src/.DS_Store
-/src/main/.DS_Store
-/src/main/scala/.DS_Store
-/src/main/scala/com/.DS_Store
-/src/main/scala/com/target_ready/.DS_Store
+# /.DS_Store
+# /src/.DS_Store
+# /src/main/.DS_Store
+# /src/main/scala/.DS_Store
+# /src/main/scala/com/.DS_Store
+# /src/main/scala/com/target_ready/.DS_Store
