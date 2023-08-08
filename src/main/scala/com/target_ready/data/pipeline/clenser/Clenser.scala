@@ -50,7 +50,6 @@ object Clenser extends Logging {
     val notNullDf: DataFrame = dfCheckNullKeyRows.filter(dfCheckNullKeyRows("nullFlag") === false).drop("nullFlag")
 
     writeNullDataToOutputDir(nullDf, fileFormat, filePath)
-    print("writeNullDataToOutputDir")
 
     notNullDf
   }
