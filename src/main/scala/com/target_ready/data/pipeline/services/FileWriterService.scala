@@ -16,7 +16,7 @@ object FileWriterService {
   def writeDataToStream(df: DataFrame, topic: String): Unit = {
     try {
       df
-        .selectExpr("CAST(value AS STRING)")
+        .selectExpr("CAST(value AS STRING)") // Convert the value column to string for writing to Kafka
         .write
         .format("kafka")
         .option("kafka.bootstrap.servers", SERVER_ID)
@@ -99,7 +99,7 @@ object FileWriterService {
         .format(fileFormat)
         .option("path", filePath)
         .option("checkpointLocation", CHECKPOINT_LOCATION)
-        .trigger(Trigger.Once())
+        .trigger(Trigger.Once()) // Trigger the write operation only once
         .start()
         .awaitTermination(10000)
     } catch {
