@@ -13,12 +13,14 @@ object DbService {
    * @param tableName MySql table name
    * ============================================================================================================ */
   def sqlWriter(df: DataFrame, tableName: String, url: String): Unit = {
+    // Set connection properties for authentication and driver
 
     val connectionProperties = new java.util.Properties()
     connectionProperties.put("user", USER_NAME)
     connectionProperties.put("password", KEY_PASSWORD)
     connectionProperties.put("driver", JDBC_DRIVER)
 
+    // Write the DataFrame to the specified table in the database
     df.write.mode(SaveMode.Overwrite).jdbc(url, tableName, connectionProperties)
   }
 
@@ -38,11 +40,13 @@ object DbService {
    * ============================================================================================================= */
   def sqlReader(driver: String, tableName: String, jdbcUrl: String, user: String, password: String)(implicit spark: SparkSession): DataFrame = {
 
+    // Set connection properties for authentication and driver
     val connectionProperties = new java.util.Properties()
     connectionProperties.put("user", user)
     connectionProperties.put("password", password)
     connectionProperties.put("driver", driver)
-
+  
+    // Read the specified table from the database into a DataFrame
     val df: DataFrame = spark.read.jdbc(jdbcUrl, tableName, connectionProperties)
     df
   }
