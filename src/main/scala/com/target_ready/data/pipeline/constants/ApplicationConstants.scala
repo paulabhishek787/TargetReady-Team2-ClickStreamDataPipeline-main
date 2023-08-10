@@ -1,5 +1,6 @@
 package com.target_ready.data.pipeline.constants
 
+// Define a set of constants used throughout the application
 object ApplicationConstants {
 
   /** ===============================================================================================================
@@ -16,22 +17,23 @@ object ApplicationConstants {
   val TOPIC_NAME_CLICKSTREAM_DATA: String = "clickStreamDataTest"
 
   val CHECKPOINT_LOCATION: String = "checkpoint"
-
+  // ... Other configuration constants ...
+  
   /** ===============================================================================================================
    * INPUT-OUTPUT formats, paths
    *  ============================================================================================================== */
 
-  //  ITEM_DATA
+  // Input and Output Paths and Formats for Item Data
   val INPUT_FORMAT_ITEM_DATA: String = "csv"
   val OUTPUT_FORMAT_ITEM_DATA: String = "orc"
   val INPUT_FILE_PATH_ITEM_DATA: String = "data/Input/item/item_data.csv"
 
-  //  ClickStream Data
+  // Input and Output Paths and Formats for ClickStream Data
   val INPUT_FORMAT_CLICKSTREAM: String = "csv"
   val OUTPUT_FORMAT__CLICKSTREAM: String = "orc"
   val INPUT_FILE_PATH_CLICKSTREAM_DATA: String = "data/Input/clickstream/clickstream_log.csv"
 
-  //  Output file path
+  // Output file path for processed data
   val OUTPUT_FILE_PATH: String = "data/output"
   val NULL_VALUE_PATH: String = "data/output/null_value_output/null_outputs.orc"
 
@@ -109,7 +111,8 @@ object ApplicationConstants {
   /** ============================================================================================================
    * PIPELINE EXIT CODES
    * ============================================================================================================ */
-
+  
+  // Exit codes to indicate success or failure of the pipeline
   val FAILURE_EXIT_CODE: Int = 1
   val SUCCESS_EXIT_CODE: Int = 0
 
