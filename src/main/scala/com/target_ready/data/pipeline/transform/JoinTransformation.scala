@@ -21,6 +21,7 @@ object JoinTransformation {
 //    var df1WithWatermark=dataTypeValidation(df1, COLUMNS_VALID_DATATYPE_CLICKSTREAM,NEW_DATATYPE_CLICKSTREAM)
 //    df1WithWatermark= df1WithWatermark.withWatermark(EVENT_TIMESTAMP, "1 minute")
 
+    // Perform the join operation
     val joinedDF = df1.join(df2, Seq(joinKey), joinType)
     joinedDF
   }
