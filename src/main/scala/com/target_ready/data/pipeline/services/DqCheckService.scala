@@ -8,6 +8,7 @@ import org.apache.spark.internal.Logging
 
 object DqCheckService extends Logging {
 
+  // Function to execute Data Quality (DQ) checks
   def executeDqCheck()(implicit spark: SparkSession): Unit = {
 
     /** =========================================== READING DATA FROM MYSQL TABLE =========================================== */
