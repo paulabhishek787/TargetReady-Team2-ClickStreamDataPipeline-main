@@ -10,7 +10,7 @@ import org.apache.spark.internal.Logging
 object Clenser extends Logging {
 
   /** ==============================================================================================================
-   * FUNCTION TO CHANGE THE DATATYPE
+   *  Function to change data types of specified columns in a DataFrame
    *
    * @param df          the dataframe
    * @param columnNames sequence of columns of the df dataframe
@@ -32,7 +32,7 @@ object Clenser extends Logging {
 
 
   /** ==============================================================================================================
-   * FUNCTION TO FIND AND REMOVE NULL VALUE ROWS FROM DATAFRAME
+  // Function to find and remove rows with null values in specified primary key columns
    *
    * @param df             the dataframe taken as an input
    * @param primaryColumns sequence of primary key columns
@@ -48,6 +48,7 @@ object Clenser extends Logging {
 
     val nullDf: DataFrame = dfCheckNullKeyRows.filter(dfCheckNullKeyRows("nullFlag") === true)
     val notNullDf: DataFrame = dfCheckNullKeyRows.filter(dfCheckNullKeyRows("nullFlag") === false).drop("nullFlag")
+    // Write the null value rows to a specified file location
 
     writeNullDataToOutputDir(nullDf, fileFormat, filePath)
 
@@ -58,7 +59,7 @@ object Clenser extends Logging {
 
 
   /** ==============================================================================================================
-   * FUNCTION TO REMOVE DUPLICATE ROWS IN DATAFRAME
+   * Function to remove duplicate rows based on specified primary key columns and optional ordering column
    *
    * @param df                the dataframe
    * @param primaryKeyColumns sequence of primary key columns of the df dataframe
@@ -77,6 +78,7 @@ object Clenser extends Logging {
     dfDropDuplicates
 
   }
+  // Function to remove duplicate rows based on specified columns
 
   def dropDuplicates(df: DataFrame, columns: Seq[String]): DataFrame = {
     df.dropDuplicates(columns)
@@ -85,7 +87,7 @@ object Clenser extends Logging {
 
 
   /** ==============================================================================================================
-   *  FUNCTION TO UPPERCASE DATAFRAME COLUMNS
+  // Function to convert all DataFrame column values to uppercase
    *
    *  @param df     the dataframe
    *  @return       dataframe with uppercase columns
@@ -93,7 +95,7 @@ object Clenser extends Logging {
   def uppercaseColumns(df: DataFrame): DataFrame = {
     val columns = df.columns
     var resultDf = df
-
+    // Loop through each column and apply the uppercase transformation
     for (colm <- columns) resultDf = resultDf.withColumn(colm, upper(col(colm)))
     resultDf
   }
@@ -102,7 +104,7 @@ object Clenser extends Logging {
 
 
   /** ==============================================================================================================
-   *  FUNCTION TO LOWERCASE DATAFRAME COLUMNS
+  // Function to convert all DataFrame column values to lowercase
    *
    *  @param df     the dataframe
    *  @return       dataframe with lowercase columns
@@ -110,7 +112,7 @@ object Clenser extends Logging {
   def lowercaseColumns(df: DataFrame): DataFrame = {
     val columns = df.columns
     var resultDf = df
-
+    // Loop through each column and apply the lowercase transformation
     for (colm <- columns) resultDf = resultDf.withColumn(colm, lower(col(colm)))
     resultDf
   }
@@ -119,7 +121,7 @@ object Clenser extends Logging {
 
 
   /** ===============================================================================================================
-   *  FUNCTION TO TRIM DATAFRAME COLUMNS
+  // Function to trim whitespace from DataFrame column values
    *
    *  @param df     the dataframe
    *  @return       trimmed dataframe
@@ -127,7 +129,7 @@ object Clenser extends Logging {
   def trimColumn(df: DataFrame): DataFrame = {
     val columns = df.columns
     var resultDf = df
-
+    // Loop through each column and apply the trim transformations
     for (colm <- columns) {
       resultDf = df.withColumn(colm, trim(col(colm)))
       resultDf = df.withColumn(colm, ltrim(col(colm)))
@@ -140,7 +142,7 @@ object Clenser extends Logging {
 
 
   /** ==============================================================================================================
-   *  FUNCTION TO SPLIT READ-STREAM DATAFRAME COLUMN(Value) TO MULTIPLE COLUMNS
+  // Function to split a concatenated column into multiple columns
    *
    * @param df                          the dataframe taken as an input
    * @param ConcatenatedColumnName      column name which needs to be split
@@ -159,7 +161,7 @@ object Clenser extends Logging {
 
 
   /** ==============================================================================================================
-   *  FUNCTION TO CONCATENATE READ-STREAM DATAFRAME COLUMN(Value) TO MULTIPLE COLUMNS
+  // Function to concatenate specified columns into a new column
    *
    *  @param df             the dataframe taken as an input
    *  @param columnNames    column names of given dataframe
