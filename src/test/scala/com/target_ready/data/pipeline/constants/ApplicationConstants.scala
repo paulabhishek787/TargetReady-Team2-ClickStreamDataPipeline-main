@@ -112,7 +112,7 @@ object ApplicationConstants {
 
   //  MySql Server Username, Password
   val USER_NAME: String = "root"
-  val KEY_PASSWORD: String = "Krishna@123"
+  val KEY_PASSWORD: String = "Paul@123"
 
 
 
